@@ -1,0 +1,9 @@
+# Don't lint node_modules/
+node_modules
+# Don't lint build/
+build
+# Don't lint coverage/
+coverage
+# Ignore module files
+**/*.d.ts
+
