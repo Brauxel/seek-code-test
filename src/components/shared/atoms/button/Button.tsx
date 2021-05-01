@@ -17,6 +17,7 @@ export const Button: React.FC<Props> = ({
   children,
   className,
   appearance,
+  ...buttonProps
 }) => {
   const classNames = cx(
     'button',
@@ -30,6 +31,7 @@ export const Button: React.FC<Props> = ({
     <button
       className={classNames}
       type={type === 'submit' ? 'submit' : 'button'}
+      {...buttonProps}
     >
       {children}
     </button>
