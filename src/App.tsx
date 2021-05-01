@@ -3,6 +3,7 @@ import { Card } from './components/shared/atoms/card/Card'
 import { FlexBox } from './components/shared/atoms/flexBox/FlexBox'
 import { Input } from './components/shared/atoms/input/Input'
 import { Label } from './components/shared/atoms/label/Label'
+import { Cart } from './components/shared/organisms/cart/Cart'
 
 export const App = () => (
   <>
@@ -61,5 +62,7 @@ export const App = () => (
         <Button appearance="secondary">Add To Cart</Button>
       </Card>
     </FlexBox>
+
+    <Cart />
   </>
 )
