@@ -1,0 +1,41 @@
+.button {
+  margin: 0;
+  padding: 0;
+  display: block;
+  cursor: pointer;
+  font-weight: inherit;
+  text-decoration: none;
+  border-radius: 7px;
+  padding: 8px 21px;
+  min-width: 110px;
+  transition: all 200ms ease-in;
+  font-size: 16px;
+
+  &--primary {
+    color: #fff;
+    background: #a20067;
+    border: 1px solid #a20067;
+
+    &:hover {
+      background: transparent;
+      color: #a20067;
+    }
+  }
+
+  &--secondary {
+    color: #a20067;
+    background: transparent;
+    border: 1px solid #a20067;
+
+    &:hover {
+      background: #a20067;
+      color: #fff;
+    }
+  }
+
+  &:disabled {
+    cursor: default;
+    pointer-events: none;
+    opacity: 0.5;
+  }
+}

@@ -1,24 +1,12 @@
-import logo from './logo.svg'
-import './App.css'
+import { Button } from './components/shared/atoms/button/Button'
 
 export const App = () => (
-  <div className="App">
-    <header className="App-header">
-      <img src={logo} className="App-logo" alt="logo" />
-      <p>
-        Edit <code>src/App.tsx</code> and save to reload. tes
-      </p>
+  <div>
+    <label htmlFor="classic-ad">
+      Classic Ad
+      <input id="classic-ad" type="number" />
+    </label>
 
-      <div className="aa">test</div>
-
-      <a
-        className="App-link"
-        href="https://reactjs.org"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Learn React
-      </a>
-    </header>
+    <Button appearance="secondary">Add To Cart</Button>
   </div>
 )
