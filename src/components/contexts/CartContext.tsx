@@ -14,10 +14,14 @@ interface CartContextProps {
 export const CartContext = createContext({} as CartContextProps)
 
 const reducer = (state: CartItems, action: Action) => {
-  if (action.type === ActionTypes.ADD_ITEM) return [action.payload, ...state]
-  if (action.type === ActionTypes.REMOVE_ITEM) return [action.payload, ...state]
-
-  return state
+  switch (action.type) {
+    case ActionTypes.ADD_ITEM:
+      return [action.payload, ...state]
+    case ActionTypes.REMOVE_ITEM:
+      return [action.payload, ...state]
+    default:
+      return state
+  }
 }
 
 export const CartProvider: React.FC<Props> = ({ children }) => {
