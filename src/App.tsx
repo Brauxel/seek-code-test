@@ -4,9 +4,10 @@ import { FlexBox } from './components/shared/atoms/flexBox/FlexBox'
 import { Input } from './components/shared/atoms/input/Input'
 import { Label } from './components/shared/atoms/label/Label'
 import { Cart } from './components/shared/organisms/cart/Cart'
+import { CartProvider } from './components/contexts/CartContext'
 
 export const App = () => (
-  <>
+  <CartProvider>
     <FlexBox>
       <Card>
         <p>Classic Ads offer the most basic level of advertisement</p>
@@ -64,5 +65,5 @@ export const App = () => (
     </FlexBox>
 
     <Cart />
-  </>
+  </CartProvider>
 )
