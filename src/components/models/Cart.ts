@@ -1,11 +1,13 @@
+import { Id } from './base'
+
 export enum ActionTypes {
   ADD_ITEM = 'ADD_ITEM',
   REMOVE_ITEM = 'REMOVE_ITEM',
 }
 
 export interface CartItem {
-  id: number | string
-  productId: number | string
+  id: Id
+  productId: Id
   quantity: number
 }
 
