@@ -24,20 +24,20 @@ export const CartProvider: React.FC<Props> = ({ children }) => {
   const [items, dispatch] = useReducer(reducer, [])
 
   const addItems = useCallback(
-    ({ id, quantity }) => {
+    ({ id, productId, quantity }) => {
       dispatch({
         type: ActionTypes.ADD_ITEM,
-        payload: { id, quantity },
+        payload: { id, productId, quantity },
       })
     },
     [dispatch]
   )
 
   const removeItems = useCallback(
-    ({ id, quantity }) => {
+    ({ id, productId, quantity }) => {
       dispatch({
         type: ActionTypes.REMOVE_ITEM,
-        payload: { id, quantity },
+        payload: { id, productId, quantity },
       })
     },
     [dispatch]
