@@ -1,6 +1,6 @@
 import { Id } from './base'
 
-interface Product {
+export interface Product {
   id: Id
   name: string
   description: string
