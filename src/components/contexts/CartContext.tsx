@@ -8,8 +8,8 @@ interface Props {
 
 interface CartContextProps {
   items: CartItems
-  addItems: ({ productId, quantity }: ProductPayload) => void
-  removeItems: ({ productId, quantity }: ProductPayload) => void
+  addItem: ({ productId, quantity }: ProductPayload) => void
+  removeItem: ({ productId, quantity }: ProductPayload) => void
 }
 
 export const CartContext = createContext({} as CartContextProps)
@@ -29,7 +29,9 @@ const reducer = (state: CartItems, action: Action) => {
 
       return [...state, action.payload]
     case ActionTypes.REMOVE_ITEM:
-      return [...state]
+      return state.filter(
+        ({ productId }) => productId !== action.payload.productId
+      )
     default:
       return state
   }
@@ -38,7 +40,7 @@ const reducer = (state: CartItems, action: Action) => {
 export const CartProvider: React.FC<Props> = ({ children }) => {
   const [items, dispatch] = useReducer(reducer, [])
 
-  const addItems = useCallback(
+  const addItem = useCallback(
     (payload) => {
       dispatch({
         type: ActionTypes.ADD_ITEM,
@@ -48,7 +50,7 @@ export const CartProvider: React.FC<Props> = ({ children }) => {
     [dispatch]
   )
 
-  const removeItems = useCallback(
+  const removeItem = useCallback(
     (payload) => {
       dispatch({
         type: ActionTypes.REMOVE_ITEM,
@@ -58,7 +60,7 @@ export const CartProvider: React.FC<Props> = ({ children }) => {
     [dispatch]
   )
 
-  const value = { items, addItems, removeItems }
+  const value = { items, addItem, removeItem }
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>
 }

@@ -12,7 +12,7 @@ interface Props {
 
 export const Product: React.FC<Props> = ({ product }) => {
   const [currentQty, setCurrentQty] = useState(0)
-  const { addItems } = useContext(CartContext)
+  const { addItem } = useContext(CartContext)
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setCurrentQty(Number(event.target.value))
@@ -23,7 +23,7 @@ export const Product: React.FC<Props> = ({ product }) => {
   ) => {
     e.preventDefault()
 
-    addItems({
+    addItem({
       name: product.name,
       productId: product.id,
       quantity: currentQty,
@@ -51,7 +51,7 @@ export const Product: React.FC<Props> = ({ product }) => {
         onChange={handleChange}
       />
 
-      <Button type="submit" appearance="secondary" onClick={handleAddClick}>
+      <Button type="submit" appearance="primary" onClick={handleAddClick}>
         Add To Cart
       </Button>
     </Card>
