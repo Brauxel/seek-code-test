@@ -1,5 +1,6 @@
 import { createContext, useReducer, useCallback } from 'react'
-import { Action, CartItems, ActionTypes, CartItem } from '../models/Cart'
+import { Action, ActionTypes, CartItems } from '../models/Cart'
+import { ProductPayload } from '../models/Products'
 
 interface Props {
   children: React.ReactNode
@@ -7,8 +8,8 @@ interface Props {
 
 interface CartContextProps {
   items: CartItems
-  addItems: ({ id, quantity }: CartItem) => void
-  removeItems: ({ id, quantity }: CartItem) => void
+  addItems: ({ productId, quantity }: ProductPayload) => void
+  removeItems: ({ productId, quantity }: ProductPayload) => void
 }
 
 export const CartContext = createContext({} as CartContextProps)
@@ -16,9 +17,19 @@ export const CartContext = createContext({} as CartContextProps)
 const reducer = (state: CartItems, action: Action) => {
   switch (action.type) {
     case ActionTypes.ADD_ITEM:
-      return [action.payload, ...state]
+      if (state.find((item) => item.productId === action.payload.productId)) {
+        return state.map((product) => {
+          if (action.payload.productId !== product.productId) return product
+          return {
+            ...product,
+            quantity: product.quantity + action.payload.quantity,
+          }
+        })
+      }
+
+      return [...state, action.payload]
     case ActionTypes.REMOVE_ITEM:
-      return [action.payload, ...state]
+      return [...state]
     default:
       return state
   }
@@ -28,20 +39,20 @@ export const CartProvider: React.FC<Props> = ({ children }) => {
   const [items, dispatch] = useReducer(reducer, [])
 
   const addItems = useCallback(
-    ({ id, productId, quantity }) => {
+    (payload) => {
       dispatch({
         type: ActionTypes.ADD_ITEM,
-        payload: { id, productId, quantity },
+        payload,
       })
     },
     [dispatch]
   )
 
   const removeItems = useCallback(
-    ({ id, productId, quantity }) => {
+    (payload) => {
       dispatch({
         type: ActionTypes.REMOVE_ITEM,
-        payload: { id, productId, quantity },
+        payload,
       })
     },
     [dispatch]

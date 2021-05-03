@@ -6,11 +6,16 @@ export const Cart = () => {
 
   return (
     <div className="cart">
-      <h2>Cart has {items.length} items</h2>
-      <p>Cart: Classic Ads: 3 * $269.99 = xx</p>
-      <p>Cart: Stand Out Ads: 3 * $269.99 = xx</p>
-      <p>Cart: Premium Ads: 3 * $269.99 = xx</p>
-      <p>Total: xx</p>
+      {items.length === 0
+        ? 'No items currently in the cart'
+        : items.map((item) => (
+            <div key={item.productId}>
+              <p>
+                Cart: {item.name} * {item.quantity} = $
+                {item.quantity * item.price}
+              </p>
+            </div>
+          ))}
     </div>
   )
 }

@@ -1,19 +1,13 @@
-import { Id } from './base'
+import { ProductPayload } from './Products'
 
 export enum ActionTypes {
   ADD_ITEM = 'ADD_ITEM',
   REMOVE_ITEM = 'REMOVE_ITEM',
 }
 
-export interface CartItem {
-  id: Id
-  productId: Id
-  quantity: number
-}
-
-export type Action = {
+export interface Action {
   type: ActionTypes
-  payload: CartItem
+  payload: ProductPayload
 }
 
-export type CartItems = CartItem[]
+export type CartItems = ProductPayload[]
