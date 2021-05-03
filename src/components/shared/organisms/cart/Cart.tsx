@@ -4,7 +4,7 @@ import { Button } from '../../atoms/button/Button'
 import './Cart.scss'
 
 export const Cart = () => {
-  const { items } = useContext(CartContext)
+  const { items, removeItem } = useContext(CartContext)
 
   return (
     <div className="cart">
@@ -17,7 +17,14 @@ export const Cart = () => {
                 {item.quantity * item.price}
               </div>
 
-              <Button appearance="secondary">Remove Item</Button>
+              <Button
+                appearance="secondary"
+                onClick={() => {
+                  removeItem(item.productId)
+                }}
+              >
+                Remove Item
+              </Button>
             </div>
           ))}
     </div>

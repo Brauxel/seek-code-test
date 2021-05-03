@@ -1,6 +1,9 @@
 import { createContext, useReducer, useCallback } from 'react'
-import { Action, ActionTypes, CartItems } from '../models/Cart'
+import { addItemToCart, removeItemFromCart } from '../actions/CartActions'
+import { Id } from '../models/base'
+import { CartItems } from '../models/Cart'
 import { ProductPayload } from '../models/Products'
+import { CartReducer } from '../reducers/CartReducer'
 
 interface Props {
   children: React.ReactNode
@@ -9,53 +12,24 @@ interface Props {
 interface CartContextProps {
   items: CartItems
   addItem: ({ productId, quantity }: ProductPayload) => void
-  removeItem: ({ productId, quantity }: ProductPayload) => void
+  removeItem: (profileId: Id) => void
 }
 
 export const CartContext = createContext({} as CartContextProps)
 
-const reducer = (state: CartItems, action: Action) => {
-  switch (action.type) {
-    case ActionTypes.ADD_ITEM:
-      if (state.find((item) => item.productId === action.payload.productId)) {
-        return state.map((product) => {
-          if (action.payload.productId !== product.productId) return product
-          return {
-            ...product,
-            quantity: product.quantity + action.payload.quantity,
-          }
-        })
-      }
-
-      return [...state, action.payload]
-    case ActionTypes.REMOVE_ITEM:
-      return state.filter(
-        ({ productId }) => productId !== action.payload.productId
-      )
-    default:
-      return state
-  }
-}
-
 export const CartProvider: React.FC<Props> = ({ children }) => {
-  const [items, dispatch] = useReducer(reducer, [])
+  const [items, dispatch] = useReducer(CartReducer, [])
 
   const addItem = useCallback(
     (payload) => {
-      dispatch({
-        type: ActionTypes.ADD_ITEM,
-        payload,
-      })
+      dispatch(addItemToCart(payload))
     },
     [dispatch]
   )
 
   const removeItem = useCallback(
     (payload) => {
-      dispatch({
-        type: ActionTypes.REMOVE_ITEM,
-        payload,
-      })
+      dispatch(removeItemFromCart(payload))
     },
     [dispatch]
   )

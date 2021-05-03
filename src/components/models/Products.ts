@@ -3,10 +3,10 @@ import { Id } from './base'
 interface ProductAttributes {
   name: string
   price: number
+  description?: string
 }
 export interface Product extends ProductAttributes {
   id: Id
-  description: string
 }
 
 export interface ProductPayload extends ProductAttributes {
