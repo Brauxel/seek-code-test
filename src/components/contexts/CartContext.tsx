@@ -1,5 +1,9 @@
 import { createContext, useReducer, useCallback } from 'react'
-import { Action, CartItems, ActionTypes, CartItem } from '../models/Cart'
+import { addItemToCart, removeItemFromCart } from '../actions/CartActions'
+import { Id } from '../models/base'
+import { CartItems } from '../models/Cart'
+import { ProductPayload } from '../models/Products'
+import { CartReducer } from '../reducers/CartReducer'
 
 interface Props {
   children: React.ReactNode
@@ -7,43 +11,30 @@ interface Props {
 
 interface CartContextProps {
   items: CartItems
-  addItems: ({ id, quantity }: CartItem) => void
-  removeItems: ({ id, quantity }: CartItem) => void
+  addItem: ({ productId, quantity }: ProductPayload) => void
+  removeItem: (profileId: Id) => void
 }
 
 export const CartContext = createContext({} as CartContextProps)
 
-const reducer = (state: CartItems, action: Action) => {
-  if (action.type === ActionTypes.ADD_ITEM) return [action.payload, ...state]
-  if (action.type === ActionTypes.REMOVE_ITEM) return [action.payload, ...state]
-
-  return state
-}
-
 export const CartProvider: React.FC<Props> = ({ children }) => {
-  const [items, dispatch] = useReducer(reducer, [])
+  const [items, dispatch] = useReducer(CartReducer, [])
 
-  const addItems = useCallback(
-    ({ id, productId, quantity }) => {
-      dispatch({
-        type: ActionTypes.ADD_ITEM,
-        payload: { id, productId, quantity },
-      })
+  const addItem = useCallback(
+    (payload) => {
+      dispatch(addItemToCart(payload))
     },
     [dispatch]
   )
 
-  const removeItems = useCallback(
-    ({ id, productId, quantity }) => {
-      dispatch({
-        type: ActionTypes.REMOVE_ITEM,
-        payload: { id, productId, quantity },
-      })
+  const removeItem = useCallback(
+    (payload) => {
+      dispatch(removeItemFromCart(payload))
     },
     [dispatch]
   )
 
-  const value = { items, addItems, removeItems }
+  const value = { items, addItem, removeItem }
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>
 }

@@ -1,0 +1,11 @@
+.cart {
+  &__item {
+    display: flex;
+    align-items: center;
+
+    &__info {
+      margin-right: 20px;
+      margin-left: 20px;
+    }
+  }
+}
