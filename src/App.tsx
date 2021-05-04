@@ -5,9 +5,12 @@ import { ProductList } from './components/shared/organisms/productList/ProductLi
 import { products } from './mockData/products'
 import { Checkout } from './components/shared/organisms/checkout/Checkout'
 import { ButtonsRow } from './components/shared/molecules/buttonRow/ButtonsRow'
+import CheckoutObject from './abstracts/Checkout'
+import { pricingRules } from './mockData/pricingRules'
 
 export const App = () => {
   const [customerType, setCustomerType] = useState('Standard')
+  const checkout = new CheckoutObject(pricingRules, customerType, products)
 
   const handleCustomerTypeChange = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
@@ -38,7 +41,7 @@ export const App = () => {
 
       <ProductList products={products} />
       <Cart />
-      <Checkout customerType={customerType} />
+      <Checkout checkout={checkout} />
     </CartProvider>
   )
 }

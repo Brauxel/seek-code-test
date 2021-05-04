@@ -22,12 +22,13 @@ export const Product: React.FC<Props> = ({ product }) => {
   ) => {
     e.preventDefault()
 
-    addItem({
-      name: product.name,
-      productId: product.id,
-      quantity: currentQty,
-      price: product.price,
-    })
+    if (currentQty > 0)
+      addItem({
+        name: product.name,
+        productId: product.id,
+        quantity: currentQty,
+        price: product.price,
+      })
 
     setCurrentQty(0)
   }
