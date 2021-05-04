@@ -3,7 +3,6 @@ import { CartContext } from 'src/components/contexts/CartContext'
 import { Product as ProductType } from 'src/components/models/Products'
 import { Button } from '../../atoms/button/Button'
 import { Card } from '../../atoms/card/Card'
-// import { Input } from '../../atoms/input/Input'
 import { Label } from '../../atoms/label/Label'
 
 interface Props {
