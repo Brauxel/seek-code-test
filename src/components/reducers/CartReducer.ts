@@ -4,7 +4,7 @@ import {
   AddActionPayload,
   CartActionTypes,
   RemoveActionPayload,
-} from '../actions/CartActions'
+} from '../shared/actions/CartActions'
 import { CartItems } from '../shared/models/Cart'
 
 // Type Guards to ensure code is adherent to the types of the versatile data passed to cart actions

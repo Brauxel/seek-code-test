@@ -1,5 +1,8 @@
 import { createContext, useReducer, useCallback } from 'react'
-import { addItemToCart, removeItemFromCart } from '../actions/CartActions'
+import {
+  addItemToCart,
+  removeItemFromCart,
+} from '../shared/actions/CartActions'
 import { Id } from '../shared/models/base'
 import { CartItems } from '../shared/models/Cart'
 import { ProductPayload } from '../shared/models/Products'
