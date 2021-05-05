@@ -6,7 +6,7 @@ import {
 import { Id } from '../shared/models/base'
 import { CartItems } from '../shared/models/Cart'
 import { ProductPayload } from '../shared/models/Products'
-import { CartReducer } from '../reducers/CartReducer'
+import { CartReducer } from '../shared/reducers/CartReducer'
 
 interface Props {
   children: React.ReactNode

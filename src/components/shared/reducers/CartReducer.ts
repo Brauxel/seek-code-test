@@ -4,8 +4,8 @@ import {
   AddActionPayload,
   CartActionTypes,
   RemoveActionPayload,
-} from '../shared/actions/CartActions'
-import { CartItems } from '../shared/models/Cart'
+} from '../actions/CartActions'
+import { CartItems } from '../models/Cart'
 
 // Type Guards to ensure code is adherent to the types of the versatile data passed to cart actions
 const isAddTypeAction = (action: Action): action is AddActionPayload =>
