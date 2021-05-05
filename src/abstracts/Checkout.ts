@@ -51,7 +51,7 @@ export default class CheckoutObject {
           : 0
       }
       default:
-        return ''
+        return product?.price ? product?.price * lineItem.quantity : 0
     }
   }
 }

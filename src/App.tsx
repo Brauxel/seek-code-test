@@ -15,7 +15,7 @@ export const App = () => {
   const handleCustomerTypeChange = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
-    const { value } = e.target as HTMLInputElement
+    const { value } = e.target as HTMLButtonElement
     if (value) setCustomerType(value)
   }
 
@@ -40,7 +40,9 @@ export const App = () => {
       />
 
       <ProductList products={products} />
+
       <Cart />
+
       <Checkout checkout={checkout} />
     </CartProvider>
   )

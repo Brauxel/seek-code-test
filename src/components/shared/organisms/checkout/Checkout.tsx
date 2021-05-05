@@ -11,9 +11,10 @@ export const Checkout: React.FC<Props> = ({ checkout }) => {
 
   return (
     <div>
+      <h3>Post discount prices:</h3>
       {items.map((item) => (
         <p key={item.productId}>
-          {item.name}: {checkout.generateProductPrice(item.productId, items)}
+          {item.name}: ${checkout.generateProductPrice(item.productId, items)}
         </p>
       ))}
     </div>
