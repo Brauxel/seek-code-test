@@ -1,6 +1,6 @@
 import { ChangeEvent, useContext, useState } from 'react'
 import { CartContext } from 'src/components/contexts/CartContext'
-import { Product as ProductType } from 'src/components/models/Products'
+import { Product as ProductType } from 'src/components/shared/models/Products'
 import { Button } from '../../atoms/button/Button'
 import { Card } from '../../atoms/card/Card'
 import { Label } from '../../atoms/label/Label'

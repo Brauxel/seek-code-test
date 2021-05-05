@@ -1,5 +1,5 @@
-import { Id } from '../models/base'
-import { ProductPayload } from '../models/Products'
+import { Id } from '../shared/models/base'
+import { ProductPayload } from '../shared/models/Products'
 
 export enum ActionTypes {
   ADD_ITEM = 'ADD_ITEM',

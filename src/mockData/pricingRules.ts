@@ -1,4 +1,4 @@
-import { PricingRule } from 'src/components/models/pricingRules'
+import { PricingRule } from 'src/components/shared/models/pricingRules'
 
 export const BUY_FOR_PRICE = 'buy-for-price'
 export const QUANTITY_FOR_QUANTITY = 'quantity-for-quantity'

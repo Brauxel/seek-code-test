@@ -1,7 +1,7 @@
-import { Id } from 'src/components/models/base'
-import { CartItems } from 'src/components/models/Cart'
-import { PricingRule } from 'src/components/models/pricingRules'
-import { Products } from 'src/components/models/Products'
+import { Id } from 'src/components/shared/models/base'
+import { CartItems } from 'src/components/shared/models/Cart'
+import { PricingRule } from 'src/components/shared/models/pricingRules'
+import { Products } from 'src/components/shared/models/Products'
 import { BUY_FOR_PRICE, QUANTITY_FOR_QUANTITY } from 'src/mockData/pricingRules'
 
 export default class CheckoutObject {
