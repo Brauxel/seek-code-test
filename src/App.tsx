@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Cart } from './components/shared/organisms/cart/Cart'
-import { CartProvider } from './components/contexts/CartContext'
+import { CartProvider } from './components/shared/contexts/CartContext'
 import { ProductList } from './components/shared/organisms/productList/ProductList'
 import { products } from './mockData/products'
 import { Checkout } from './components/shared/organisms/checkout/Checkout'

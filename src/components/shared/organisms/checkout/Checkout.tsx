@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 import CheckoutObject from 'src/abstracts/Checkout'
-import { CartContext } from 'src/components/contexts/CartContext'
+import { CartContext } from 'src/components/shared/contexts/CartContext'
 
 interface Props {
   checkout: CheckoutObject

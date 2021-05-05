@@ -1,12 +1,9 @@
 import { createContext, useReducer, useCallback } from 'react'
-import {
-  addItemToCart,
-  removeItemFromCart,
-} from '../shared/actions/CartActions'
-import { Id } from '../shared/models/base'
-import { CartItems } from '../shared/models/Cart'
-import { ProductPayload } from '../shared/models/Products'
-import { CartReducer } from '../shared/reducers/CartReducer'
+import { addItemToCart, removeItemFromCart } from '../actions/CartActions'
+import { Id } from '../models/base'
+import { CartItems } from '../models/Cart'
+import { ProductPayload } from '../models/Products'
+import { CartReducer } from '../reducers/CartReducer'
 
 interface Props {
   children: React.ReactNode
