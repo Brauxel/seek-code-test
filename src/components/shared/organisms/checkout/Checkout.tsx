@@ -17,6 +17,8 @@ export const Checkout: React.FC<Props> = ({ checkout }) => {
           {item.name}: ${checkout.generateProductPrice(item.productId, items)}
         </p>
       ))}
+
+      <h2>Total: {checkout.generateTotal(items)}</h2>
     </div>
   )
 }

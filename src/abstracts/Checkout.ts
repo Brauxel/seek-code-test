@@ -54,4 +54,13 @@ export default class CheckoutObject {
         return product?.price ? product?.price * lineItem.quantity : 0
     }
   }
+
+  generateTotal(cart: CartItems) {
+    let total = 0
+    for (let i = 0; i < cart.length; i += 1) {
+      total += this.generateProductPrice(cart[i].productId, cart)
+    }
+
+    return total
+  }
 }

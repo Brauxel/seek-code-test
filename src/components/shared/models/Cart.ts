@@ -1,3 +1,5 @@
 import { ProductPayload } from './Products'
 
-export type CartItems = ProductPayload[]
+export type CartItem = ProductPayload
+
+export type CartItems = CartItem[]
