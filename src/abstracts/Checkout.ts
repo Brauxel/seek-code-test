@@ -22,14 +22,13 @@ export default class CheckoutObject {
   }
 
   generateProductPrice(id: Id, cart: CartItems) {
+    const lineItem = cart.find(({ productId }) => productId === id)
+    if (!lineItem) return 0
+
     const relevantPricingRule = this.pricingRules.find(
       ({ customerType, productId }) =>
         customerType === this.customerType && productId === id
     )
-
-    const lineItem = cart.find(({ productId }) => productId === id)
-
-    if (!lineItem) return 0
 
     const product = this.products.find(({ id: productId }) => productId === id)
 
