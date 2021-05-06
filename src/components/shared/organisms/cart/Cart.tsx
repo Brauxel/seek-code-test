@@ -8,6 +8,7 @@ export const Cart = () => {
 
   return (
     <div className="cart">
+      <h3>Cart</h3>
       {items.length === 0
         ? 'No items currently in the cart'
         : items.map((item) => (

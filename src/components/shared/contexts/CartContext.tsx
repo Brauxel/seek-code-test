@@ -7,6 +7,7 @@ import { CartReducer } from '../reducers/CartReducer'
 
 interface Props {
   children: React.ReactNode
+  values?: CartItems
 }
 
 interface CartContextProps {
@@ -17,8 +18,8 @@ interface CartContextProps {
 
 export const CartContext = createContext({} as CartContextProps)
 
-export const CartProvider: React.FC<Props> = ({ children }) => {
-  const [items, dispatch] = useReducer(CartReducer, [])
+export const CartProvider: React.FC<Props> = ({ children, values = [] }) => {
+  const [items, dispatch] = useReducer(CartReducer, values)
 
   const addItem = useCallback(
     (payload) => {
