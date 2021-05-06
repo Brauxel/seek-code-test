@@ -1,4 +1,4 @@
-import { Products } from 'src/components/models/Products'
+import { Products } from 'src/components/shared/models/Products'
 
 export const products: Products = [
   {

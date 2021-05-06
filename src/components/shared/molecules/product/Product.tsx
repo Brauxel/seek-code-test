@@ -1,6 +1,6 @@
 import { ChangeEvent, useContext, useState } from 'react'
-import { CartContext } from 'src/components/contexts/CartContext'
-import { Product as ProductType } from 'src/components/models/Products'
+import { CartContext } from 'src/components/shared/contexts/CartContext'
+import { Product as ProductType } from 'src/components/shared/models/Products'
 import { Button } from '../../atoms/button/Button'
 import { Card } from '../../atoms/card/Card'
 import { Label } from '../../atoms/label/Label'
@@ -22,12 +22,13 @@ export const Product: React.FC<Props> = ({ product }) => {
   ) => {
     e.preventDefault()
 
-    addItem({
-      name: product.name,
-      productId: product.id,
-      quantity: currentQty,
-      price: product.price,
-    })
+    if (currentQty > 0)
+      addItem({
+        name: product.name,
+        productId: product.id,
+        quantity: currentQty,
+        price: product.price,
+      })
 
     setCurrentQty(0)
   }
